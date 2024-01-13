@@ -8,3 +8,4 @@ MySQL
 Stripe
 Prisma
 hotpot.ai
+OpenAI + HuggingFace
