@@ -1,11 +1,12 @@
+import SearchInput from "@/components/search-input";
 import { UserButton } from "@clerk/nextjs";
 
 const RootPage = () => {
-    return ( 
-        <div>
-            
-        </div>
-    );
+  return ( 
+    <div className="h-full p-4 pl-24 space-y-2">
+      <SearchInput />
+    </div>
+  );
 }
  
 export default RootPage;

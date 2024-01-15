@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
+import { cn } from '@/lib/utils'
 
 import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
+        <body className={cn("bg-secondary", inter.className)}>
           <ThemeProvider
               attribute="class"
               defaultTheme="system"
