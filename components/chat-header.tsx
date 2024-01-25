@@ -2,7 +2,13 @@
 
 import { Companion, Message } from "@prisma/client";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Edit, MessageSquare, MoreVertical } from "lucide-react";
+import { 
+  ChevronLeft, 
+  Edit, 
+  MessageSquare, 
+  MoreVertical, 
+  Trash 
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import BotAvatar from "@/components/bot-avatar";
 import { useUser } from "@clerk/nextjs";
@@ -56,6 +62,10 @@ const ChatHeader = ({
             <DropdownMenuItem>
               <Edit className="w-4 h-4 mr-2" />
               Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Trash className="w-4 h-4 mr-2" />
+              Delete
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
