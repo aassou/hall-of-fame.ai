@@ -10,7 +10,10 @@ OpenAI + HuggingFace
 Stripe
 hotpot.ai
 planetscale.com
-
+Pincone Verctor DB
+Redis
+Langchain
+Upstash/Ratelimit
 
 ## Prisma ORM
 ```
