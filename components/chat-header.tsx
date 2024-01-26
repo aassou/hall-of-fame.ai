@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { Companion, Message } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { 
@@ -13,6 +14,7 @@ import { useRouter } from "next/navigation";
 import BotAvatar from "@/components/bot-avatar";
 import { useUser } from "@clerk/nextjs";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ChatHeaderProps {
   companion: Companion & {
@@ -28,6 +30,25 @@ const ChatHeader = ({
 }: ChatHeaderProps) => {
   const router = useRouter();
   const { user } = useUser();
+  const { toast } = useToast();
+  
+  const onDelete = async () => {
+    try {
+      await axios.delete(`/api/companion/${companion.id}`)
+
+      toast({
+        description: "Success"
+      })
+
+      router.refresh();
+      router.push("/");
+    } catch (error) {
+      toast({
+        description: "Something went wrong!",
+        variant: "destructive"
+      })
+    }
+  }
 
   return ( 
     <div className="flex w-full justify-between items-center border-b border-primary/10 pb-4">
@@ -59,11 +80,15 @@ const ChatHeader = ({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => router.push(`/companion/${companion.id}`)}
+            >
               <Edit className="w-4 h-4 mr-2" />
               Edit
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={onDelete}
+            >
               <Trash className="w-4 h-4 mr-2" />
               Delete
             </DropdownMenuItem>
