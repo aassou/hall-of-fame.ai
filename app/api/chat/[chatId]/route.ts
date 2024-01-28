@@ -62,7 +62,7 @@ export async function POST(
     if (records.length === 0) {
       await memoryManager.seedChatHistory(
         companion.seed, 
-        "\n", 
+        "\n\n", 
         companionKey
       );
     }
