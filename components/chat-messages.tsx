@@ -30,6 +30,8 @@ const ChatMessages = ({
     scrollRef?.current?.scrollIntoView({ behavior: "smooth"});
   }, [messages.length]);
 
+  console.log(messages)
+
   return (
     <div className="flex-1 overflow-y-auto pr-4">
       <ChatMessage
