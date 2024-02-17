@@ -76,14 +76,12 @@ export async function POST(
     let relevantHistory = "";
 
     if (!!similarDocs && similarDocs.length !== 0) {
-      relevantHistory = similarDocs.map(
-        (doc) => doc.pageContent
-      ).join("\n");
+      relevantHistory = similarDocs.map((doc) =>doc.pageContent).join("\n");
     }
 
     const { handlers } = LangChainStream();
     const model = new Replicate({
-      model: "meta/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea",
+      model: "a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea",
       input: {
         max_length: 2048,
       },

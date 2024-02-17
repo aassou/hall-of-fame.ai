@@ -41,6 +41,12 @@ const ChatClient = ({
       setMessages((current) => [...current, systemMessage]);
       setInput("");
 
+      console.log('------------------');
+      console.log('PROPMT: ' + prompt);
+      console.log('------------------');
+      console.log('COMPLETION' + completion);
+      console.log('------------------');
+
       router.refresh();
     }
   });
